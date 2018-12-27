@@ -11,10 +11,10 @@ bin  boot  conf  lib  LICENSE  NOTICE  README.txt
 
 2. lib目录，这里面包含了Maven依赖的Java类库，包括Maven自己的类库，以及第三方类库。
 
-##### Maven $HOME/.m2目录
+##### Maven $HOME/.m2目录、maven仓库
 默认情况下， .m2目录内部是一个repository目录，这是**Maven本地仓库**目录。所有的Maven构件都会被存放在这个本地仓库中，以方便各个项目之间重用它们。比如，如果执行过mvn help:system的话，就能在$HOME/.m2／repository/org/apache/maven/plugins目录下面找到maven-help-plugin目录，内部是这个插件的jar以及POM文件等。简单来说，有两点：
 1. Maven会把项目依赖项从中央仓库下载到本地仓库中，供本地项目开发用，开发者只需配置项目直接依赖项。
-2. Maven可以根据坐标(**groupId,artifactId,version**)来唯一地定位maven仓库中的一个构件，也就是根据这个坐标确定构件的存储位置。groupId,artifactId,version是maven坐标的三要素。
+2. Maven可以根据坐标(**groupId,artifactId,version**)来唯一地定位maven仓库中的一个构件，也就是根据这个坐标确定构件的存储位置。
 
 #### 生命周期和插件
 **maven生命周期就是对项目所有的构建过程的抽象和统一。** maven生命周期包含了项目的清理、初始化、编译、测试、打包、集成测试、验证、部署、站点生成等几乎所有的构建步骤。也就是说，几乎所有的项目构建过程，都能映射到一个maven生命周期上。
@@ -71,3 +71,17 @@ maven核心仅仅定义了抽象的生命周期，具体的构建过程中的工
 
 maven的生命周期是与插件相互绑定的，用于完成实际的构建工作。具体地说，其实是**生命周期的各个阶段与插件的目标相互绑定**，以完成某个具体的构建任务。
 
+
+#### maven坐标
+maven坐标在maven里面是一个比较重要的元素，maven根据坐标查找构件，我们的项目的POM文件中也要配置坐标，maven构建的包也会根据坐标放到本地仓库中的特定位置。maven坐标：
+1. groupId. groupId定义当前maven项目隶属的实际项目。首先，maven项目和实际项目不一定是一对一的关系。比如SpringFramework这个实际项目，对应的maven项目会有很多，比如spring-core, spring-context等。这是由于maven中模块的概念，一个实际项目一般会被划分为很多模块，实际上开发一个项目一般都是分模块进行的。另外，groupId不应该简单认为就对应着一个公司或者组织，因为一个公司或者组织一般都不止一个实际项目。因此，groupId应该是一个与公司或者组织，以及一个实际项目有关的标识。最后，groupId的表示方式和Java包名的表示方式很类似，通常与域名反向一一对应。
+
+2. artifactId. artifactId定义了一个实际项目中的一个maven项目，或者说是一个实际项目中分模块开发的其中一个模块。通常比较好的做法是使用一个实际项目名称作为artifactId的前缀，比如上面提到过的spring，这样方便查找实际构件：因为默认情况下，maven构建的构件，文件名以artifactId为开头。
+
+3. version. version定义了maven项目当前的版本。
+
+4. packaging. packaging定义了maven项目的打包方式。打包方式通常与所构建的构件的文件扩展名对应，如jar。另外， 打包方式会影响到构建的生命周期，比如jar打包和war打包会使用不同的命令（生命周期阶段对应的插件目标）。最后，默认的packaging是jar。
+
+5. classifier. classifier用于帮助定义构建输出的一些附属构件。附属构件与主构件对应。一般不能直接定义项目的classifier，因为附属构件不是项目直接生成的，而是由附加的插件帮助生成的。
+
+上述五个坐标元素，groupId，artifactId，version是必须定义的，packaging是可选的，而classifier是不能直接定义的。
