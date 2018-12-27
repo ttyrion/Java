@@ -27,7 +27,47 @@ maven为大多数的构建过程绑定了默认的插件来完成对应的工作
 **maven生命周期并不是一个整体！** maven拥有三套相互独立的生命周期：clean, default, site。 clean生命周期的目的是清理项目，default生命周期的目的是构建项目，site生命周期的目的是建立项目站点。
 
 每个生命周期包含一些阶段（phase），**这些阶段是有顺序的：后面的阶段依赖前面的阶段** 。 我们使用maven时，最多的，也是最直接的方式就是调用这些生命周期阶段。
-1. **clean**: clean生命周期包含三个阶段：pre-clean，clean, post-clean.
-2. **default**: default生命周期定义了真正**构建**时所需要执行的所有步骤。
+1. **clean**: clean生命周期包含三个阶段：pre-clean，**clean**, post-clean.
+2. **default**: default生命周期定义了真正**构建**时所需要执行的所有步骤。default生命周期包含的阶段会列在后面。
+3. **site**: site生命周期的目的是建立站点和发布项目站点。其包括这几个阶段：pre-site, site（生成项目站点文档）, post-site, site-deploy。
+```javascript
+default生命周期的阶段：
+ 2.1  validate
+ 2.2  initialize
+ 2.3  generate-sources
+ 2.4  process-sources ：处理项目主资源文件。一般来说，是对src/main/resources目录
+      的内容进行变量替换等工作后，复制到项目输出的主classpath目录中。
+ 2.5  generate-resources
+ 2.6  process-resources
+ 2.7  compile  ：编译项目主代码。一般来说，是编译src/main/java目录下
+      的Java代码文件到项目输出的主classpath目录中。
+ 2.8  process-classes
+ 2.9  generate-test-sources
+ 2.10 process-test-sources ：处理项目测试资源文件。一般来说，是对src/test/resources目录
+      的内容进行变量替换等工作后，复制到项目输出的测试classpath目录中。
+ 2.11 generate-test-resources
+ 2.12 process-test-resources
+ 2.13 test-compile ：编译项目测试代码。一般来说，是编译src/test/java目录
+      的Java代码文件到项目输出的测试classpath目录中。
+ 2.14 process-test-calsses
+ 2.15 test ：使用单元测试框架运行测试，不过测试代码不会被打包或者部署。
+ 2.16 prepare-package
+ 2.17 package ：接收编译好的代码，打包成可发布的格式，如jar。
+ 2.18 pre-integration-test
+ 2.19 integration-test ：集成测试。
+ 2.20 post-integration-test
+ 2.21 verify
+ 2.22 install ：将包安装到Maven本地仓库，供本地其他Maven项目使用。
+ 2.23 deploy ：将最终的包复制到远程仓库，供其他开发人员和Maven项目使用。
+```
 
+###### maven命令和生命周期
+在命令行中执行maven任务的最主要方式就是使用Maven的生命周期阶段。需要注意的是：maven的各个生命周期之间是相互独立的，但是一个生命周期内的各个阶段是有前后依赖关系的。比如在命令行中执行 mvn test: 该命令表示调用maven的default生命周期的test阶段。实际执行的阶段是default生命周期中从validate，initialize开始，一直到test的所有阶段。结果就是执行测试的时候，项目的代码会自动被编译，因为中间会调用compile阶段，即执行compile构建过程。
+
+###### maven插件和生命周期
+maven核心仅仅定义了抽象的生命周期，具体的构建过程中的工作，是由maven插件完成的。插件以独立的形式存在，因此我们才会发现maven的安装包只有不到3M大小。maven会在需要的时候（比如，执行一个maven命令）下载对应的插件并使用插件完成实际构建工作。
+
+每个插件可以完成多个功能，每个功能就是一个**插件目标**，一般以 “插件前缀:插件目标”这样的形式在maven中调用。比如compiler:compile 表示maven-compiler-plugin的compile目标。
+
+maven的生命周期是与插件相互绑定的，用于完成实际的构建工作。具体地说，其实是**生命周期的各个阶段与插件的目标相互绑定**，以完成某个具体的构建任务。
 
