@@ -5,6 +5,9 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("META_INF/knight.xml");
+        Knight knight = context.getBean(Knight.class);
+        knight.embarkOnQuest();
+        context.close(); 
     }
 }

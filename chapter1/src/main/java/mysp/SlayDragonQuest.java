@@ -14,6 +14,8 @@ public class SlayDragonQuest implements Quest {
     }
  
     public void embark() {
-        stream.println("SlayDragonQuest embarking.");
+        stream.println("**********************");
+        stream.println("*SlayDragonQuest embarking.");
+        stream.println("**********************");
     }
 }

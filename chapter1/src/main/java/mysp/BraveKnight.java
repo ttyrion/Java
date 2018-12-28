@@ -1,10 +1,6 @@
 package mysp;
 
-interface knight {
-    public void embarkOnQuest();
-}
-
-public class BraveKnight implements knight {
+public class BraveKnight implements Knight {
     private Quest quest;
 
     public BraveKnight(Quest quest) {
