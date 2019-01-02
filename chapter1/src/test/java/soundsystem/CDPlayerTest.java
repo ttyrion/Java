@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -11,11 +12,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes=CDPlayerConfig.class)
 public class CDPlayerTest {
     @Autowired
-    private CompactDisc cd;
+    private CDPlayer player = null;
 
     @Test
-    public void cdShouldNotBeNull() {
+    public void play() {
         System.out.println("Test running...");
-        assertNotNull(cd);
+        player.play();
     }
 }
