@@ -1,3 +1,6 @@
+#### Thinking in Java
+[Thinking in Java](https://github.com/ttyrion/Java/blob/master/Thinking_in_Java.md) 
+
 #### Maven(3.5.4)
 ##### Maven Home目录
 ```javasript
