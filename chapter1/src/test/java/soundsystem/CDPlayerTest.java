@@ -21,13 +21,22 @@ public class CDPlayerTest {
             ++i;
             System.out.println("onTest times: " + i);
             try{
-                play();
+                try {
+                    play();
+                }
+                finally {
+                    System.out.println("onTest internal try finally.");
+                    throw new NullPointerException();
+                } 
             }
             catch(NullPointerException e) {
+                System.out.println("onTest NullPointerException catched.");
+            }
+            catch(RuntimeException e) {
                 System.out.println("onTest RuntimeException catched.");
             }
             finally {
-                System.out.println("onTest RuntimeException out of catch.");
+                System.out.println("onTest RuntimeException out of catch finally.");
             }
         }
     }
