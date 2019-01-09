@@ -87,7 +87,7 @@ Class字面常量不仅可以作用于普通的类，还能用于接口、数组
 
 Java还有第三种形式的RTTI：**instanceof**，它告诉我们对象是不是某个特定类型的实例。但是instanceof并不常用，如果项目中大量使用了instanceof，那说明项目的设计可能比较糟糕。
 
-##### 反射
+##### 反射：违反了类访问权限，破坏了封装性
 如果不知道某个对象的具体类型，RTTI是可以告诉我们的。但是这有一个限制：我们想要知道的对象的具体类型必须是编译期已知的。换句话说：**编译器在编译期必须知道所有需要通过RTTI来处理的类**。
 
 这看起来好像不算是限制，难道还有编译期间不知道的类型吗？答案是有。我们可能需要从一个磁盘文件或者网络中的代表一个类的字节序列来加载一个类。还有比如“远程方法调用”，即在运行时跨网络在远程平台上创建和运行对象。
@@ -155,38 +155,11 @@ public class AppTest
 
         Class<? extends Base> c = b.getClass();
         try {
-            //Method sayHello = c.getMethod("sayHello", new Class[]{int.class});  // NoSuchMethodException
-            Method sayHello = c.getMethod("sayHello", (Class<?>[])null);
-            //sayHello.invoke(b, "Am I Right?");  // IllegalArgumentException
-            sayHello.invoke(b, (Object[])null);
-
-            //Method lowerCase = c.getMethod("lowerCase", new Class[]{String.class});  // NoSuchMethodException
-            Method lowerCase = c.getDeclaredMethod("lowerCase", new Class[]{String.class});
-            String str = (String)lowerCase.invoke(b,"Just test Reflection."); // IllegalAccessException
-            System.out.println("lowerCase.invoke: " + str);
-
-            //Field name = c.getField("name"); // NoSuchFieldException
-            Field name = c.getDeclaredField("name");
-            System.out.println("Field name = " + name.get(b));  // IllegalAccessException
-        }
-        catch (NoSuchMethodException exp) {
-            System.out.println("NoSuchMethodException");
-        }
-        catch (NoSuchFieldException exp) {
-            System.out.println("NoSuchFieldException");
-        }
-        catch (IllegalAccessException exp) {
-            System.out.println("IllegalAccessException");
-        }
-        catch (IllegalArgumentException exp) {
-            System.out.println("IllegalArgumentException");
-        }
-        catch (InvocationTargetException exp) {
-            System.out.println("InvocationTargetException");
+            Proxy.
         }
     }
 }
 
 ```
 
-上面是测试反射的例子。从输出能看出：虽然反射能获取到类的private方法和域，但是并不能访问它们。也就是说，反射并没有破坏封装性。但是有些人说反射破坏了封装性，使得一个类的private方法和域都能被访问，不知为何。有可能是以前的Java SDK 版本像他们说的那样, 我这是 Java SE8，并没有这种情况。
+上面是测试反射的例子。从输出能看出：虽然反射能获取到类的private方法和域，但是并不能访问它们。但是，先在Method或Filed对象上调用setAccessible(true)，之后就能不受限制地访问它们。可见：**反射破坏了类的封装性**。
