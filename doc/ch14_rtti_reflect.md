@@ -155,7 +155,34 @@ public class AppTest
 
         Class<? extends Base> c = b.getClass();
         try {
-            Proxy.
+            //Method sayHello = c.getMethod("sayHello", new Class[]{int.class});  // NoSuchMethodException
+            Method sayHello = c.getMethod("sayHello", (Class<?>[])null);
+            //sayHello.invoke(b, "Am I Right?");  // IllegalArgumentException
+            sayHello.invoke(b, (Object[])null);
+
+            //Method lowerCase = c.getMethod("lowerCase", new Class[]{String.class});  // NoSuchMethodException
+            Method lowerCase = c.getDeclaredMethod("lowerCase", new Class[]{String.class});
+            String str = (String)lowerCase.invoke(b,"Just test Reflection."); // IllegalAccessException
+            System.out.println("lowerCase.invoke: " + str);
+
+            //Field name = c.getField("name"); // NoSuchFieldException
+            Field name = c.getDeclaredField("name");
+            System.out.println("Field name = " + name.get(b));  // IllegalAccessException
+        }
+        catch (NoSuchMethodException exp) {
+            System.out.println("NoSuchMethodException");
+        }
+        catch (NoSuchFieldException exp) {
+            System.out.println("NoSuchFieldException");
+        }
+        catch (IllegalAccessException exp) {
+            System.out.println("IllegalAccessException");
+        }
+        catch (IllegalArgumentException exp) {
+            System.out.println("IllegalArgumentException");
+        }
+        catch (InvocationTargetException exp) {
+            System.out.println("InvocationTargetException");
         }
     }
 }
