@@ -85,3 +85,8 @@ maven坐标在maven里面是一个比较重要的元素，maven根据坐标查�
 5. classifier. classifier用于帮助定义构建输出的一些附属构件。附属构件与主构件对应。一般不能直接定义项目的classifier，因为附属构件不是项目直接生成的，而是由附加的插件帮助生成的。
 
 上述五个坐标元素，groupId，artifactId，version是必须定义的，packaging是可选的，而classifier是不能直接定义的。
+
+
+
+#### Maven的一些目标
+**查看本地仓库路径：** mvn help:evaluate -Dexpression=settings.localRepository
