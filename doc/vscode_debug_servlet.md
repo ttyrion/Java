@@ -6,11 +6,13 @@ Maven有个Web项目原型，可以据此生成我们的Web项目结构。创建
 ![maven_webapp](https://raw.githubusercontent.com/ttyrion/Java/master/doc/img/web/maven_webapp.png)
 
 选项“maven-archetype-webapp”正是我们需要的web项目原型。选择一个archetype之后，maven会要求我们输入项目的maven坐标元素，如groupId、artifactId等等：
+
 ![maven_coordinate](https://raw.githubusercontent.com/ttyrion/Java/master/doc/img/web/maven_coordinates.png)
 
 注意，这里我们要把package设置为“war”（Web Archive），因为web项目最终会被打包为war格式，而不是默认的jar。
 
 创建完web项目之后，VSCode默认不会自动打开项目目录。手动选择File->Open Folder打开我们刚才创建的项目的根目录，就能看到maven创建的web项目结构如下：
+
 ![maven_project_structure](https://raw.githubusercontent.com/ttyrion/Java/master/doc/img/web/maven_project_structure.png)
 
 在src/main目录下，包含了webapp目录，其内部又包含了WEB-INF目录。WEB-INF目录是一个很重要的目录，它最终会被maven打包到war包中，其内部也包含了web.xml（**最终打包后WEB-INF还会包含classes目录，classes目录包含java Servlet类**）。
@@ -93,6 +95,13 @@ servlet创建完毕之后，就是配置servlet。在web.xml的“web-app”内�
 ![maven_tomcat_server](https://raw.githubusercontent.com/ttyrion/Java/master/doc/img/web/maven_tomcat_server.png)
 
 #### Web 项目的调试
-调试web项目就需要借助“**Tomcat for Java**”插件。安装了此插件之后，VSCode EXPLORER下面就会多出一个“**TOMCAT SERVERS**”栏。
+调试web项目就需要借助“**Tomcat for Java**”插件。安装了此插件之后，VSCode EXPLORER下面就会多出一个“**TOMCAT SERVERS**”栏。右侧的“+”按钮点击后选择本地的Tomcat Home目录，即可添加一个Tomcat Server项：
 
+![tomcat_plugin](https://raw.githubusercontent.com/ttyrion/Java/master/doc/img/web/tomcat_plugin.png)
+
+右键点击某一Tomcat Server项，可以看到Tomcat插件可用的功能，包括“**Debug War Package**”，即调试Web项目包：
+
+![tomcat_debug_war](https://raw.githubusercontent.com/ttyrion/Java/master/doc/img/web/tomcat_debug_war.png)
+
+调试起war包之后，在浏览器中访问相应的地址，就可以调试Web项目，如Servlet等。Tomcat插件也会在Tomcat Server项下面记录我们调试的本地war包，此后我们调试该项目可直接右键点击该war包并选择“**Open In Browser**”即可，操作更便利。
 
