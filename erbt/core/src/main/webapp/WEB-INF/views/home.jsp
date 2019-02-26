@@ -1,9 +1,12 @@
-<html>
-    <head>
-        <title>Erbt</title>
-    </head>
+<!DOCTYPE html>
+<%@taglib prefix="t" tagdir="../tags" %>
+ 
+<t:base title="Erbt"> 
 
-    <body>
-        <h1>Welcome to Erbt</h1>
-    </body>
-</html>
+<jsp:attribute name="main_area">
+    <div>
+        <img src="img/activity1.jpg" alt="" width=960px height=370px>
+    </div>
+</jsp:attribute>
+ 
+</t:base>
