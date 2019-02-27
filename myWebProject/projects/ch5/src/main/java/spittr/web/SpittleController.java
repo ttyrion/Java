@@ -25,6 +25,7 @@ public class SpittleController {
         List<Spittle> spittles = spittleRepository.findSpittles();
         //数据（属性）key="spittles"
         model.addAttribute("spittles", spittles);
+        model.addAttribute("title", "Your Recent Spittles");
 
         //返回视图名称="spittles"
         return "spittles";

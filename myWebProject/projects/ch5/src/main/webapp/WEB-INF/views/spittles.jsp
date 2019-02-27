@@ -7,10 +7,10 @@
 <html>
     <head>
         <title>Spittr</title>
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/spittles.css" />" >
+        <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/spittles.css" />" >
     </head>
     <body>
-        <h1>Recent Spittles</h1>
+        <h1><c:out value="${title}"/></h1>
         <ul class="spittleList">
             <c:forEach items="${spittles}" var="spittle">
                 <li id="spittle_<c:out value="${spittle.id}"/>">
