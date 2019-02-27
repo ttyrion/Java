@@ -34,6 +34,14 @@
       <version>5.0.6.RELEASE</version>
     </dependency>
 
+    <!--只有配置了测试的依赖，Java Test Runner插件才能进行单元测试。-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>5.0.6.RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -44,6 +52,20 @@
 
   <build>
     <finalName>ch5</finalName>
+    <!--项目资源的配置，还可加上include,exclude,filter等-->
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <!--WEB-INF目录下的文件是受保护的，因此不能把CSS文件放在这里，否则JSP访问不到CSS-->
+            <!--<targetPath>${project.build.directory}/${project.artifactId}/WEB-INF/</targetPath>-->
+            <targetPath>${project.build.directory}/${project.artifactId}/resources/</targetPath>
+            <!--
+            <includes>
+                <include>*.txt</include>
+            </includes>
+            -->
+        </resource>
+    </resources>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
