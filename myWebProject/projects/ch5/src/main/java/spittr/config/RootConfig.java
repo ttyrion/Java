@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 //扫描非web bean？
-@ComponentScan(basePackages={""}, excludeFilters={@Filter(type=FilterType.ANNOTATION, value=EnableWebMvc.class)})
+@ComponentScan(basePackages={"spittr.data"}, excludeFilters={@Filter(type=FilterType.ANNOTATION, value=EnableWebMvc.class)})
 public class RootConfig {
     
 }

@@ -48,6 +48,16 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
+    <!--JSTL，不配置会出现如下错误：-->
+    <!--无法在web.xml或使用此应用程序部署的jar文件中解析绝对uri：[http://java.sun.com/jsp/jstl/core]-->
+    <!--标签库组成：jar文件包和tld(taglib library description)文件-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+  </dependency>
+
   </dependencies>
 
   <build>
