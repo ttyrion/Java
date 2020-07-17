@@ -18,6 +18,16 @@ $ sudo yum install libXScrnSaver
 
 ```
 
+#### CentOS update VSCode
+```javascript
+// uninstall old version
+$ yum -y remove code
+
+// install latest version
+$ rpm -ivh code-1.47.2-1594838045.el7.x86_64.rpm 
+
+```
+
 #### CentOS install OpenJDK
 ```javascript
 $ yum -y install java-11-openjdk java-11-openjdk-devel
