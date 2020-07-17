@@ -46,4 +46,5 @@ OpenJDK Runtime Environment 18.9 (build 11.0.7+10-LTS)
 OpenJDK 64-Bit Server VM 18.9 (build 11.0.7+10-LTS, mixed mode, sharing)
 
 ```
+如果系统已经安装了其他版本的JDK，就按照上面的命令来选择一个默认的JDK版本。
 安装完 JDK 11 之后，配置JAVA_HOME 和 PATH。
