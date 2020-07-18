@@ -59,3 +59,14 @@ OpenJDK 64-Bit Server VM 18.9 (build 11.0.7+10-LTS, mixed mode, sharing)
 如果系统已经安装了其他版本的JDK，就按照上面的命令来选择一个默认的JDK版本。
 
 安装完 JDK 11 之后，配置JAVA_HOME 和 PATH。
+
+#### CentOS config JAVA_HOME
+```javascript
+$ cat > /etc/profile.d/java11.sh <<EOF
+export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)))))
+export PATH=\$PATH:\$JAVA_HOME/bin
+EOF
+
+$ source /etc/profile.d/java11.sh
+
+```
