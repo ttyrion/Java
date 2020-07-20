@@ -70,3 +70,15 @@ EOF
 $ source /etc/profile.d/java11.sh
 
 ```
+
+#### CentOS install Maven
+```javascript
+$ tar -xvf apache-maven-3.6.3-bin.tar.gz
+$ mv apache-maven-3.6.3 /usr/local/maven3.6
+// 配置 ~/.bashrc
+export M2_HOME=/usr/local/maven3.6
+export PATH=$PATH:$M2_HOME/bin
+
+```
+
+
