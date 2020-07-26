@@ -87,7 +87,7 @@ maven坐标在maven里面是一个比较重要的元素，maven根据坐标查�
 上述五个坐标元素，groupId，artifactId，version是必须定义的，packaging是可选的，而classifier是不能直接定义的。
 
 #### Maven的一些设置
-##### 1. 设置阿里云仓库
+##### 1. 设置阿里云仓库（conf/settings.xml）
 ```javascript
 <mirrors>
 	<mirror>
