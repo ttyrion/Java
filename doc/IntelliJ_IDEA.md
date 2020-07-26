@@ -20,4 +20,5 @@ Spring Initializr插件可以方便地创建Spring boot项目。IDEA可能默认
 IDEA可以方便地给Java类添加一些常见方法，如Getter, Setter, toString等待。
 
 具体快捷键是ALT+Insert：
+
 ![insert_method](https://github.com/ttyrion/Java/blob/master/doc/img/idea/insert_method.png)
