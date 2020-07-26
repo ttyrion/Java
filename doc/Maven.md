@@ -89,8 +89,9 @@ maven坐标在maven里面是一个比较重要的元素，maven根据坐标查�
 
 
 #### Maven的一些目标
-**查看本地仓库路径：** mvn help:evaluate -Dexpression=settings.localRepository
-**设置阿里云仓库：** 
+**1. 查看本地仓库路径：** mvn help:evaluate -Dexpression=settings.localRepository
+
+**2. 设置阿里云仓库：** 
 ```javascript
 <mirrors>
 	<mirror>
