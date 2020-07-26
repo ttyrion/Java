@@ -90,3 +90,15 @@ maven坐标在maven里面是一个比较重要的元素，maven根据坐标查�
 
 #### Maven的一些目标
 **查看本地仓库路径：** mvn help:evaluate -Dexpression=settings.localRepository
+**设置阿里云仓库：** 
+```javascript
+<mirrors>
+	<mirror>
+		<id>nexus-aliyun</id>
+		<mirrorOf>central</mirrorOf>
+		<name>Nexus aliyun</name>
+		<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+	</mirror>
+</mirrors>
+
+```
