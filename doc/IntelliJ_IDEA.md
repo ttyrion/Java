@@ -14,10 +14,10 @@ Spring Initializr插件可以方便地创建Spring boot项目。IDEA可能默认
 
 ### IDEA 右键New子菜单没有“Java Class”或者“Package”
 这是因为当前的目录没有被设置为源码目录。设置方式是打开Project Structure窗口(快捷键：Ctrl+Alt+Shift+S )，然后选中src目录并且选中“Mark as”后面的“Sources”标签，即可将src目录设置为源码目录。此后右键就能创建Java包或者类。如图：
-[new package](https://github.com/ttyrion/Java/blob/master/doc/img/idea/project_structure.jpg)
+![new package](https://github.com/ttyrion/Java/blob/master/doc/img/idea/project_structure.jpg)
 
 ### IDEA 添加类方法快捷键
 IDEA可以方便地给Java类添加一些常见方法，如Getter, Setter, toString等待。
 
 具体快捷键是ALT+Insert：
-[insert_method](https://github.com/ttyrion/Java/blob/master/doc/img/idea/insert_method.png)
+![insert_method](https://github.com/ttyrion/Java/blob/master/doc/img/idea/insert_method.png)
