@@ -3,6 +3,8 @@
 
 [Maven(3.5.4)](https://github.com/ttyrion/Java/blob/master/doc/Maven.md) 
 
+[IntelliJ IDEA](https://github.com/ttyrion/Java/blob/master/doc/IntelliJ_IDEA.md) 
+
 [VSCode调试Maven Webapp项目](https://github.com/ttyrion/Java/blob/master/doc/vscode_debug_servlet.md) 
 
 #### CentOS install VSCode
