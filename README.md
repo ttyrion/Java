@@ -74,10 +74,18 @@ $ source /etc/profile.d/java11.sh
 #### CentOS install Maven
 ```javascript
 $ tar -xvf apache-maven-3.6.3-bin.tar.gz
-$ mv apache-maven-3.6.3 /usr/local/maven3.6
+$ mv apache-maven-3.6.3 /usr/local/apache-maven-3.6.3
 // 配置 ~/.bashrc
-export M2_HOME=/usr/local/maven3.6
+export M2_HOME=/usr/local/apache-maven-3.6.3
 export PATH=$PATH:$M2_HOME/bin
+
+```
+
+#### Maven config in IntelliJ IDEA
+```javascript
+在IDEA的File->Setting设置框中，搜索"maven"可以定位到maven相关的设置。
+1. 这里可以设置"maven home directory"为上面的/usr/local/apache-maven-3.6.3，而不是使用IDEA安装包自带的maven版本。
+2. 这里同时可以在Maven的Importing设置里面automatically download后面的“sources”选中。开发环境选中这个可以让Maven自动下载依赖以及依赖包的源码。
 
 ```
 
