@@ -49,4 +49,9 @@ $params$
 
 ![methodcomment_edit_variables](https://github.com/ttyrion/Java/blob/master/doc/img/idea/comment_method_edit_variables.png)
 
+params变量的值为：
+```javascript
+groovyScript("if(\"${_1}\".length() == 2) {return '';} else {def result=''; def params=\"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList();for(i = 0; i < params.size(); i++) {if(i<(params.size()-1)){result+='* @param ' + params[i] + ' : ' + '\\n'}else{result+='* @param ' + params[i] + ' : '}}; return result;}", methodParameters());
+```
+
 这里，我给MyGroup添加了两个Live Templates：cc(comment for class) 以及 mc(comment for method)。编写代码时，只要鼠标落在类或者方法内部，输入cc或者mc后再输入一个Tab键，就可以自动插入注释模板。
