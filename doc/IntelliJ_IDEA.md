@@ -31,6 +31,15 @@ IDEA可以添加文件头注释模板以及类、方法模板等等。
 
 ![fileheader](https://github.com/ttyrion/Java/blob/master/doc/img/idea/comment_fileheader.png)
 
+添加了上面的文件头注释模板后，新建Java类时，类文件开头会自动加入如下注释：
+```javascript
+/**
+ * @Description:
+ * @Date: Created on 15:26 2020/7/27
+ */
+
+```
+
 #### 1. 设置类方法注释模板
 打开IDEA设置框，找到Editor设置栏下的“Live Templates”，点击右侧“+”按钮，添加一个“Template Group”，这里命名为MyGroup。完成后选中这个新添加的MyGroup，
 然后再次点击右侧“+”按钮，添加一个“Live Template”。我们只需要给这个Live Template指定一个缩写词、描述语气、模板内容。默认情况下是键盘输入缩写词后按下Tab键（右侧的Expand with可设置），IDEA即自动插入注释。
