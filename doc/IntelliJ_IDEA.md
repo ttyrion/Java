@@ -22,3 +22,31 @@ IDEA可以方便地给Java类添加一些常见方法，如Getter, Setter, toStr
 具体快捷键是ALT+Insert：
 
 ![insert_method](https://github.com/ttyrion/Java/blob/master/doc/img/idea/insert_method.png)
+
+### IDEA 设置注释模板
+IDEA可以添加文件头注释模板以及类、方法模板等等。
+
+#### 1. 设置文件头注释模板
+打开IDEA设置框，找到Editor设置栏下的“File and Code Templates”，编辑Includes下面的FileHeader的内容即可。如图：
+
+![fileheader](https://github.com/ttyrion/Java/blob/master/doc/img/idea/comment_fileheader.png)
+
+#### 1. 设置类方法注释模板
+打开IDEA设置框，找到Editor设置栏下的“Live Templates”，点击右侧“+”按钮，添加一个“Template Group”，这里命名为MyGroup。完成后选中这个新添加的MyGroup，
+然后再次点击右侧“+”按钮，添加一个“Live Template”。我们只需要给这个Live Template指定一个缩写词、描述语气、模板内容。默认情况下是键盘输入缩写词后按下Tab键（右侧的Expand with可设置），IDEA即自动插入注释。
+
+![methodcomment](https://github.com/ttyrion/Java/blob/master/doc/img/idea/comment_method.png)
+
+这里编写的模板内容为：
+```javascript
+/**
+* @Description: 
+$params$
+* @Return $return_type$
+*/
+```
+上面使用了变量的形式，因此需要点击右侧的“Edit variables”给这些变量一个表达式来计算其值。如果“Edit variables”按你是灰色不可点击，那么表示模板内容格式不对。变量编辑过程如下：
+
+![methodcomment_edit_variables](https://github.com/ttyrion/Java/blob/master/doc/img/idea/comment_method_edit_variables.png)
+
+这里，我给MyGroup添加了两个Live Templates：cc(comment for class) 以及 mc(comment for method)。编写代码时，只要鼠标落在类或者方法内部，输入cc或者mc后再输入一个Tab键，就可以自动插入注释模板。
