@@ -6,6 +6,10 @@ package com.example.algorithm.solution.tree;
  * https://medium.com/@harycane/construct-binary-tree-from-preorder-and-inorder-traversal-2b6797cd209d
  */
 
+/**
+* 前序遍历结果: root.val PRE{root.left} PRE{root.left}
+* 中序遍历结果：IN{root.left} root.val IN{root.right}
+*/
 
 public class ConstructBinaryTree {
 
@@ -30,37 +34,14 @@ public class ConstructBinaryTree {
 
         /**
         * the index of root in inOrder, it's what we need to find out
+         * we assume duplicates do not exist in this tree.
         */
         int indexOfRoot = -1;
         for (int i = inStart; i <= inEnd; ++i) {
 
-            if (inOrder[i] != root.val) {
-                continue;
-            }
-
-            /**
-            * double check: we assume duplicates exist in this tree.
-            */
-            boolean succeed = true;
-            for (int iPre = preStart + 1, iIn = inStart;
-                 iPre <= preEnd && iIn <= inEnd;
-                 ++iPre, ++iIn) {
-                if (iIn == i) {
-                    ++iIn;
-                    if (iIn > inEnd) {
-                        succeed = false;
-                        break;
-                    }
-                }
-
-                if (preOrder[iPre] != inOrder[iIn]) {
-                    succeed = false;
-                    break;
-                }
-            }
-
-            if (succeed) {
+            if (inOrder[i] == root.val) {
                 indexOfRoot = i;
+                break;
             }
         }
 
@@ -69,11 +50,13 @@ public class ConstructBinaryTree {
          */
         int preStartOfLeft = preStart + 1;
 
-        int nodesOfLeft = indexOfRoot;
+        // int nodesOfLeft = indexOfRoot;
+        int nodesOfLeft = indexOfRoot - inStart;
         int preEndOfLeft = preStartOfLeft + nodesOfLeft -1;
 
         int inStartOfleft = inStart;
-        int inEndOfLeft = indexOfRoot - 1;
+        // int inEndOfLeft = indexOfRoot - 1;
+        int inEndOfLeft = inStartOfleft + nodesOfLeft - 1;
 
         root.left = buildTree(preOrder, preStartOfLeft, preEndOfLeft,
                 inOrder, inStartOfleft, inEndOfLeft);
@@ -95,8 +78,9 @@ public class ConstructBinaryTree {
     * run sample
     */
     public void run() {
-        int[] preOrder = {1, 5, 18, 8, 9, 20, 7, 8, 12, 20, 25};
-        int[] inOrder = {8, 18, 9, 5, 20, 1, 8, 12, 7, 20, 25};
+        int[] preOrder = {8, 3, 12, 20, 18, 19, 9, 7, 50};
+        int[] inOrder = {20, 12, 3, 19, 18, 8, 7, 9, 50};
+
         TreeNode root = buildTree(preOrder, inOrder);
 
         System.out.println(root);
