@@ -73,16 +73,4 @@ public class ConstructBinaryTree {
 
         return root;
     }
-
-    /**
-    * run sample
-    */
-    public void run() {
-        int[] preOrder = {8, 3, 12, 20, 18, 19, 9, 7, 50};
-        int[] inOrder = {20, 12, 3, 19, 18, 8, 7, 9, 50};
-
-        TreeNode root = buildTree(preOrder, inOrder);
-
-        System.out.println(root);
-    }
 }
