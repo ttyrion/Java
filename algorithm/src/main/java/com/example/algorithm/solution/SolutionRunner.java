@@ -2,9 +2,12 @@ package com.example.algorithm.solution;
 
 import com.example.algorithm.solution.dp.ChangeMaker;
 import com.example.algorithm.solution.tree.ConstructBinaryTree;
+import com.example.algorithm.solution.tree.Permutation;
 import com.example.algorithm.solution.tree.TreeNode;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @Description:
@@ -16,7 +19,8 @@ public class SolutionRunner implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         // runConstructBinaryTreeSample();
-        runMoneySample();
+        // runMoneySample();
+        runNumberPermutationSample();
     }
 
     /**
@@ -38,5 +42,15 @@ public class SolutionRunner implements InitializingBean {
         int change = 23;
         int coins = changeMaker.getLeastCoinsOfValue(change);
         System.out.println("make change of " + change + " nees at least " + coins + " coins.");
+    }
+
+    public void runNumberPermutationSample() {
+        Permutation permutation = new Permutation();
+        int[] numbers = { 1, 4, 6, 2, 49, 3};
+        List<List<Integer>> numberArrangeMents = permutation.arrange(numbers);
+        for (List<Integer> arrangeMent : numberArrangeMents) {
+            System.out.println(arrangeMent);
+            System.out.println("\n");
+        }
     }
 }
