@@ -87,7 +87,7 @@ public class NQueen {
                 arrange(row+1, N, path);
 
                 /**
-                * 取消选择
+                * 取消选择，即在决策树上回溯，准备后续在广度上遍历可选择策略列表中的下一个策略
                 */
                 path.removeLast();
             }
