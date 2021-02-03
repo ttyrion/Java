@@ -5,7 +5,7 @@ import sun.plugin.dom.core.CoreConstants;
 import java.util.LinkedList;
 
 /**
- * @Description: N皇后问题，这里借助坐标来判断选择是否合法，似乎更简单
+ * @Description: N皇后问题，这里借助坐标(以N*N棋盘左上角为原点，正右方为正X轴，正下方为正Y轴，每格棋盘坐标单位为1)来判断选择是否合法，似乎更简单
  * @Date: Created on 15:22 2021/2/3
  */
 
