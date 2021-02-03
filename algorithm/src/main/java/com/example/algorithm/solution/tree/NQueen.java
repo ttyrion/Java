@@ -29,7 +29,8 @@ public class NQueen {
     /**
      * @Description:
      * @param row :
-     * @param N : row 和 N 即可表示当前可供选择的策略了
+     * @param N : row 和 N 即可表示当前可供选择的策略了，并且还能确定一个完整的决策过程结束的条件。
+     *          或者说，其实这里通过row和N这两个参数传入了一个可选择的策略列表：所有y坐标为row，x坐标为[0,N-1]的点。
      * @param path :
      * @Return void
      */
@@ -81,7 +82,7 @@ public class NQueen {
                 path.add(new Coordinate(x, y));
 
                 /**
-                * 继续后一步的策略
+                * 继续后一步的决策，在深度上继续遍历决策树
                 */
                 arrange(row+1, N, path);
 
