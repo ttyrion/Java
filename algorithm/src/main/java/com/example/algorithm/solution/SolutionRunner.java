@@ -2,11 +2,14 @@ package com.example.algorithm.solution;
 
 import com.example.algorithm.solution.dp.ChangeMaker;
 import com.example.algorithm.solution.tree.ConstructBinaryTree;
+import com.example.algorithm.solution.tree.NQueen;
 import com.example.algorithm.solution.tree.Permutation;
 import com.example.algorithm.solution.tree.TreeNode;
+import com.sun.org.apache.xpath.internal.operations.String;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,7 +23,8 @@ public class SolutionRunner implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         // runConstructBinaryTreeSample();
         // runMoneySample();
-        runNumberPermutationSample();
+        // runNumberPermutationSample();
+        runNQueenSample();
     }
 
     /**
@@ -50,6 +54,15 @@ public class SolutionRunner implements InitializingBean {
         List<List<Integer>> numberArrangeMents = permutation.arrange(numbers);
         for (List<Integer> arrangeMent : numberArrangeMents) {
             System.out.println(arrangeMent);
+            System.out.println("\n");
+        }
+    }
+
+    public void runNQueenSample() {
+        NQueen nQueen = new NQueen();
+        LinkedList<LinkedList<NQueen.Coordinate>> nQeenSolutionList = nQueen.arrange(10);
+        for (LinkedList<NQueen.Coordinate> solution : nQeenSolutionList) {
+            System.out.println(solution);
             System.out.println("\n");
         }
     }
