@@ -1,7 +1,5 @@
 package com.example.algorithm.solution.tree;
 
-import sun.plugin.dom.core.CoreConstants;
-
 import java.util.LinkedList;
 
 /**

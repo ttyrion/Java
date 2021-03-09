@@ -24,7 +24,7 @@ public class SolutionRunner implements InitializingBean {
         // runConstructBinaryTreeSample();
         // runMoneySample();
         // runNumberPermutationSample();
-        runNQueenSample();
+        // runNQueenSample();
     }
 
     /**
