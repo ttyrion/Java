@@ -74,6 +74,9 @@ public class ShortestSubString {
             * 满足条件后，窗口持续收缩至再次不满足条件，可以得到目前为止最短子串
             */
             while(valid == needValid) {
+                /**
+                 * 先记录下当前结果，因为它是符合要求的子串，单不一定是最短
+                 */
                 if (right - left < length) {
                     start = left + 1;
                     length = right - left;
